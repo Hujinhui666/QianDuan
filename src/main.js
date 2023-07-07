@@ -23,9 +23,22 @@ import axios from 'axios'
 axios
   .get('/api/users')
   .then(response => {
-    return window.sessionStorage.setItem(
+    return window.localStorage.setItem(
       'list',
       JSON.stringify(response.data.list)
+    )
+
+    // 在这里处理接口返回的模拟数据
+  })
+  .catch(error => {
+    console.error(error)
+  })
+axios
+  .get('/api/tableData')
+  .then(response => {
+    return window.localStorage.setItem(
+      'tableData',
+      JSON.stringify(response.data.tableData)
     )
 
     // 在这里处理接口返回的模拟数据
